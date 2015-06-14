@@ -9,4 +9,7 @@ class Cep(models.Model):
     bairro = models.CharField(max_length=100)
     cidade = models.CharField(max_length=100)
     estado = models.CharField(max_length=100)
-    cep = models.CharField(max_length=10)
+    zip_code = models.CharField(max_length=10, primary_key=True)
+
+    def get_cep(self):
+        return self.zip_code
