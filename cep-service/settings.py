@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cep',
+    'rest_framework'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,3 +102,35 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Log
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(asctime)s - %(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console_log': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {
+        'console.logger': {
+            'handlers': ['console_log'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+# REST Framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
+    'PAGE_SIZE': 10
+}
