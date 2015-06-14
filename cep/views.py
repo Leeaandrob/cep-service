@@ -57,7 +57,7 @@ class CepViewSet(mixins.RetrieveModelMixin,
                 return Response({'error': u'CEP Inválido ou não existe'},
                                 status=status.HTTP_400_BAD_REQUEST)
         else:
-            return Response(serializer.errors,
+            return Response({'error': u'CEP Inválido ou não existe'},
                             status=status.HTTP_400_BAD_REQUEST)
 
     def destroy(self, request, *args, **kwargs):
